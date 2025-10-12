@@ -1,0 +1,330 @@
+{
+  "version": "0.2.0",
+  "compounds": [
+    {
+      "name": "🚀 Debug All Services (Best Available)",
+      "configurations": [
+        "Debug Auth Service",
+        "Debug User Service",
+        "Debug Admin Service",
+        "Debug Audit Service",
+        "Debug Notification Service",
+        "Debug Review Service",
+        "Debug Order Service",
+        "Debug Payment Service"
+      ],
+      "preLaunchTask": "Start Python Go Java Services",
+      "presentation": { "hidden": false, "group": "🎯 Recommended", "order": 1 }
+    },
+    {
+      "name": "🚀 Start All + Debug Node.js Services",
+      "configurations": [
+        "Debug Auth Service",
+        "Debug User Service",
+        "Debug Admin Service",
+        "Debug Audit Service",
+        "Debug Notification Service",
+        "Debug Review Service"
+      ],
+      "preLaunchTask": "Start Non-Node Services",
+      "presentation": { "hidden": false, "group": "🎯 Recommended", "order": 2 }
+    },
+    {
+      "name": "🔷 Debug .NET Services",
+      "configurations": ["Debug Order Service", "Debug Payment Service"],
+      "presentation": { "hidden": false, "group": "🎯 Recommended", "order": 2 }
+    },
+    {
+      "name": "🚀 Debug Node.js + .NET Services",
+      "configurations": [
+        "Debug Auth Service",
+        "Debug User Service",
+        "Debug Admin Service",
+        "Debug Audit Service",
+        "Debug Notification Service",
+        "Debug Review Service",
+        "Debug Order Service",
+        "Debug Payment Service"
+      ],
+      "presentation": { "hidden": false, "group": "🎯 Recommended", "order": 3 }
+    },
+    {
+      "name": "Debug All Services + Web UI",
+      "configurations": [
+        "Debug Auth Service",
+        "Debug User Service",
+        "Debug Notification Service",
+        "Debug Web UI (Chrome)"
+      ],
+      "presentation": { "hidden": false, "group": "Full Stack", "order": 2 }
+    },
+    {
+      "name": "Debug Core Node.js Services",
+      "configurations": [
+        "Debug Auth Service",
+        "Debug User Service",
+        "Debug Admin Service",
+        "Debug Audit Service",
+        "Debug Notification Service",
+        "Debug Review Service"
+      ],
+      "presentation": { "hidden": false, "group": "Backend", "order": 3 }
+    },
+    {
+      "name": "Debug Node.js Services",
+      "configurations": [
+        "Debug Auth Service",
+        "Debug User Service",
+        "Debug Admin Service",
+        "Debug Audit Service",
+        "Debug Notification Service",
+        "Debug Review Service"
+      ],
+      "presentation": { "hidden": false, "group": "Backend", "order": 4 }
+    }
+  ],
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Auth Service",
+      "runtimeExecutable": "nodemon",
+      "program": "${workspaceFolder}/auth-service/src/server.js",
+      "envFile": "${workspaceFolder}/auth-service/.env",
+      "env": { "NODE_ENV": "development" },
+      "restart": true,
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug User Service",
+      "runtimeExecutable": "nodemon",
+      "program": "${workspaceFolder}/user-service/src/server.js",
+      "cwd": "${workspaceFolder}/user-service",
+      "envFile": "${workspaceFolder}/user-service/.env",
+      "env": { "NODE_ENV": "development" },
+      "restart": true,
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Admin Service",
+      "runtimeExecutable": "nodemon",
+      "program": "${workspaceFolder}/admin-service/src/server.js",
+      "envFile": "${workspaceFolder}/admin-service/.env",
+      "env": { "NODE_ENV": "development" },
+      "restart": true,
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Audit Service",
+      "runtimeExecutable": "nodemon",
+      "program": "${workspaceFolder}/audit-service/src/index.ts",
+      "cwd": "${workspaceFolder}/audit-service",
+      "envFile": "${workspaceFolder}/audit-service/.env",
+      "env": { "NODE_ENV": "development" },
+      "runtimeArgs": ["--exec", "tsx"],
+      "restart": true,
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Notification Service",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "cwd": "${workspaceFolder}/notification-service",
+      "envFile": "${workspaceFolder}/notification-service/.env",
+      "env": { "NODE_ENV": "development" },
+      "restart": true,
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Review Service",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "cwd": "${workspaceFolder}/review-service",
+      "envFile": "${workspaceFolder}/review-service/.env",
+      "env": { "NODE_ENV": "development" },
+      "restart": true,
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "type": "debugpy",
+      "request": "launch",
+      "name": "Debug Product Service",
+      "module": "uvicorn",
+      "args": ["src.main:app", "--reload", "--host", "0.0.0.0", "--port", "8000"],
+      "cwd": "${workspaceFolder}/product-service",
+      "envFile": "${workspaceFolder}/product-service/.env",
+      "env": { "PYTHONUNBUFFERED": "1" },
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "java",
+      "request": "launch",
+      "name": "Debug Order Processor Service",
+      "mainClass": "com.aioutlet.orderprocessor.OrderProcessorApplication",
+      "projectName": "order-processor-service",
+      "cwd": "${workspaceFolder}/order-processor-service",
+      "env": { "SPRING_PROFILES_ACTIVE": "local" },
+      "args": [],
+      "console": "integratedTerminal",
+      "vmArgs": [
+        "-Dspring.profiles.active=local",
+        "-Dspring.devtools.restart.enabled=true",
+        "-Dspring.devtools.livereload.enabled=true"
+      ]
+    },
+    {
+      "type": "debugpy",
+      "request": "launch",
+      "name": "Debug Inventory Service",
+      "module": "flask",
+      "args": ["run", "--reload", "--host", "0.0.0.0", "--port", "5003"],
+      "cwd": "${workspaceFolder}/inventory-service",
+      "envFile": "${workspaceFolder}/inventory-service/.env",
+      "env": { "PYTHONUNBUFFERED": "1", "FLASK_APP": "run.py", "FLASK_ENV": "development" },
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "coreclr",
+      "request": "launch",
+      "name": "Debug Order Service",
+      "program": "dotnet",
+      "args": ["watch", "run", "--project", "OrderService/OrderService.csproj"],
+      "cwd": "${workspaceFolder}/order-service",
+      "env": { "ASPNETCORE_ENVIRONMENT": "Local", "ASPNETCORE_URLS": "http://localhost:5001" },
+      "console": "integratedTerminal",
+      "stopAtEntry": false
+    },
+    {
+      "type": "coreclr",
+      "request": "launch",
+      "name": "Debug Payment Service",
+      "program": "dotnet",
+      "args": ["watch", "run", "--project", "PaymentService/PaymentService.csproj"],
+      "cwd": "${workspaceFolder}/payment-service",
+      "env": { "ASPNETCORE_ENVIRONMENT": "Local", "ASPNETCORE_URLS": "http://localhost:5002" },
+      "console": "integratedTerminal",
+      "stopAtEntry": false
+    },
+    {
+      "type": "go",
+      "request": "launch",
+      "name": "Debug Cart Service",
+      "mode": "auto",
+      "program": "${workspaceFolder}/cart-service/cmd/server",
+      "cwd": "${workspaceFolder}/cart-service",
+      "envFile": "${workspaceFolder}/cart-service/.env",
+      "env": { "ENVIRONMENT": "development", "SERVER_PORT": "8085" },
+      "console": "integratedTerminal",
+      "buildFlags": "-tags=dev"
+    },
+    {
+      "type": "go",
+      "request": "launch",
+      "name": "Debug Message Broker Service",
+      "mode": "auto",
+      "program": "${workspaceFolder}/message-broker-service/cmd/server",
+      "cwd": "${workspaceFolder}/message-broker-service",
+      "envFile": "${workspaceFolder}/message-broker-service/.env",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Debug Web UI (Chrome)",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/web-ui/src",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:///src/*": "${webRoot}/*",
+        "webpack:///./*": "${webRoot}/*",
+        "webpack:///./~/*": "${webRoot}/node_modules/*"
+      },
+      "preLaunchTask": "start-web-ui"
+    },
+    {
+      "type": "msedge",
+      "request": "launch",
+      "name": "Debug Web UI (Edge)",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/web-ui/src",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:///src/*": "${webRoot}/*",
+        "webpack:///./*": "${webRoot}/*",
+        "webpack:///./~/*": "${webRoot}/node_modules/*"
+      },
+      "preLaunchTask": "start-web-ui",
+      "timeout": 60000,
+      "serverReadyAction": {
+        "pattern": ".*Local:.*http://localhost:([0-9]+).*",
+        "uriFormat": "http://localhost:%s",
+        "action": "debugWithEdge"
+      }
+    },
+    {
+      "type": "msedge",
+      "request": "launch",
+      "name": "Debug Web UI (Edge - No Task)",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/web-ui/src",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:///src/*": "${webRoot}/*",
+        "webpack:///./*": "${webRoot}/*",
+        "webpack:///./~/*": "${webRoot}/node_modules/*"
+      },
+      "timeout": 10000
+    },
+    {
+      "type": "chrome",
+      "request": "attach",
+      "name": "Attach to Web UI (Chrome)",
+      "port": 9222,
+      "webRoot": "${workspaceFolder}/web-ui/src",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:///src/*": "${webRoot}/*",
+        "webpack:///./*": "${webRoot}/*",
+        "webpack:///./~/*": "${webRoot}/node_modules/*"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Run E2E Tests",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["test"],
+      "cwd": "${workspaceFolder}/e2e-tests",
+      "env": { "NODE_ENV": "test" },
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Run E2E Tests (Debug)",
+      "program": "${workspaceFolder}/e2e-tests/node_modules/.bin/jest",
+      "args": ["--runInBand", "--detectOpenHandles"],
+      "cwd": "${workspaceFolder}/e2e-tests",
+      "env": { "NODE_ENV": "test" },
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ]
+}

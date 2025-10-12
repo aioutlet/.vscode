@@ -1,0 +1,24 @@
+{
+  "postman.settings.dotenv-detection-notification-visibility": false,
+  "cSpell.words": [
+    "aioutlet",
+    "amqp",
+    "appender",
+    "bukhtoyarov",
+    "cartservice",
+    "databind",
+    "fasterxml",
+    "flywaydb",
+    "gocache",
+    "jacoco",
+    "jdbc",
+    "jjwt",
+    "jsonwebtoken",
+    "logback",
+    "orderprocessor",
+    "projectlombok",
+    "rabbitmq",
+    "springframework",
+    "testcontainers"
+  ]
+}

@@ -1,0 +1,908 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "start-infrastructure",
+      "type": "shell",
+      "command": "docker-compose",
+      "args": ["-f", "scripts/docker-compose/docker-compose.yml", "up", "-d"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "stop-infrastructure",
+      "type": "shell",
+      "command": "docker-compose",
+      "args": ["-f", "scripts/docker-compose/docker-compose.yml", "down"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "verify-services",
+      "type": "shell",
+      "command": "bash",
+      "args": ["scripts/verify-services.sh"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": {
+        "kind": "test",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "audit-service: build",
+      "type": "npm",
+      "script": "build",
+      "path": "audit-service/",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": ["$tsc"]
+    },
+    {
+      "label": "notification-service: build",
+      "type": "npm",
+      "script": "build",
+      "path": "notification-service/",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": ["$tsc"]
+    },
+    {
+      "label": "notification-service: dev",
+      "type": "npm",
+      "script": "dev",
+      "path": "notification-service/",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "isBackground": true,
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "problemMatcher": ["$tsc-watch"]
+    },
+    {
+      "label": "review-service: build",
+      "type": "npm",
+      "script": "build",
+      "path": "review-service/",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": ["$tsc"]
+    },
+    {
+      "label": "review-service: dev",
+      "type": "npm",
+      "script": "dev",
+      "path": "review-service/",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "isBackground": true,
+      "problemMatcher": ["$eslint-stylish"]
+    },
+    {
+      "label": "review-service: test",
+      "type": "npm",
+      "script": "test",
+      "path": "review-service/",
+      "group": {
+        "kind": "test",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": true
+      }
+    },
+    {
+      "label": "review-service: start",
+      "type": "npm",
+      "script": "start",
+      "path": "review-service/",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      }
+    },
+    {
+      "label": "review-service: prod",
+      "type": "npm",
+      "script": "prod",
+      "path": "review-service/",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "isBackground": true,
+      "problemMatcher": ["$eslint-stylish"]
+    },
+    {
+      "label": "user-service: dev",
+      "type": "npm",
+      "script": "dev",
+      "path": "user-service/",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "isBackground": true,
+      "problemMatcher": ["$eslint-stylish"]
+    },
+    {
+      "label": "user-service: prod",
+      "type": "npm",
+      "script": "prod",
+      "path": "user-service/",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "isBackground": true,
+      "problemMatcher": ["$eslint-stylish"]
+    },
+    {
+      "label": "user-service: start",
+      "type": "npm",
+      "script": "start",
+      "path": "user-service/",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      }
+    },
+    {
+      "label": "user-service: test",
+      "type": "npm",
+      "script": "test",
+      "path": "user-service/",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": true
+      }
+    },
+    {
+      "label": "user-service: seed",
+      "type": "npm",
+      "script": "seed",
+      "path": "user-service/",
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      }
+    },
+    {
+      "label": "user-service: clear",
+      "type": "npm",
+      "script": "clear",
+      "path": "user-service/",
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      }
+    },
+    {
+      "label": "build-order-service",
+      "type": "shell",
+      "command": "dotnet",
+      "args": ["build", "OrderService/OrderService.csproj"],
+      "options": {
+        "cwd": "${workspaceFolder}/order-service"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build-payment-service",
+      "type": "shell",
+      "command": "dotnet",
+      "args": ["build", "PaymentService/PaymentService.csproj"],
+      "options": {
+        "cwd": "${workspaceFolder}/payment-service"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "order-processor-service: build",
+      "type": "shell",
+      "command": "mvn",
+      "args": ["compile"],
+      "options": {
+        "cwd": "${workspaceFolder}/order-processor-service"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": "$tsc"
+    },
+    {
+      "label": "order-processor-service: clean",
+      "type": "shell",
+      "command": "mvn",
+      "args": ["clean"],
+      "options": {
+        "cwd": "${workspaceFolder}/order-processor-service"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      }
+    },
+    {
+      "label": "order-processor-service: test",
+      "type": "shell",
+      "command": "mvn",
+      "args": ["test"],
+      "options": {
+        "cwd": "${workspaceFolder}/order-processor-service"
+      },
+      "group": {
+        "kind": "test",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": "$tsc"
+    },
+    {
+      "label": "cart-service: build",
+      "type": "shell",
+      "command": "go",
+      "args": ["build", "-o", "bin/cart-service", "./cmd/server"],
+      "options": {
+        "cwd": "${workspaceFolder}/cart-service"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": "$go"
+    },
+    {
+      "label": "cart-service: test",
+      "type": "shell",
+      "command": "go",
+      "args": ["test", "./...", "-v"],
+      "options": {
+        "cwd": "${workspaceFolder}/cart-service"
+      },
+      "group": {
+        "kind": "test",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": true
+      },
+      "problemMatcher": "$go"
+    },
+    {
+      "label": "cart-service: run",
+      "type": "shell",
+      "command": "go",
+      "args": ["run", "./cmd/server"],
+      "options": {
+        "cwd": "${workspaceFolder}/cart-service"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "isBackground": true,
+      "problemMatcher": "$go"
+    },
+    {
+      "label": "cart-service: clean",
+      "type": "shell",
+      "command": "go",
+      "args": ["clean", "./..."],
+      "options": {
+        "cwd": "${workspaceFolder}/cart-service"
+      },
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      }
+    },
+    {
+      "label": "order-processor-service: package",
+      "type": "shell",
+      "command": "mvn",
+      "args": ["package", "-DskipTests"],
+      "options": {
+        "cwd": "${workspaceFolder}/order-processor-service"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": "$tsc"
+    },
+    {
+      "label": "start-web-ui",
+      "type": "npm",
+      "script": "start",
+      "path": "web-ui/",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "webpack",
+        "pattern": {
+          "regexp": "."
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*(?:Compiling|Starting the development server).*",
+          "endsPattern": ".*(?:Compiled successfully!|webpack.*compiled|On Your Network|Local:.*localhost).*"
+        }
+      }
+    },
+    {
+      "label": "auth-service: start",
+      "type": "npm",
+      "script": "start",
+      "path": "auth-service/",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "admin-service: start",
+      "type": "npm",
+      "script": "dev",
+      "path": "admin-service/",
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "audit-service: start",
+      "type": "npm",
+      "script": "dev",
+      "path": "audit-service/",
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "notification-service: start",
+      "type": "npm",
+      "script": "dev",
+      "path": "notification-service/",
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "product-service: start",
+      "type": "shell",
+      "command": "python",
+      "args": ["-m", "uvicorn", "app.main:app", "--reload", "--port", "8003"],
+      "options": {
+        "cwd": "${workspaceFolder}/product-service"
+      },
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Started server process",
+          "endsPattern": "Application startup complete"
+        }
+      }
+    },
+    {
+      "label": "inventory-service: start",
+      "type": "shell",
+      "command": "python",
+      "args": ["run.py"],
+      "options": {
+        "cwd": "${workspaceFolder}/inventory-service"
+      },
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "WARNING: This is a development server",
+          "endsPattern": "Running on"
+        }
+      }
+    },
+    {
+      "label": "order-service: start",
+      "type": "shell",
+      "command": "dotnet",
+      "args": ["run", "--project", "OrderService/OrderService.csproj"],
+      "options": {
+        "cwd": "${workspaceFolder}/order-service"
+      },
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Building...",
+          "endsPattern": "Application started"
+        }
+      }
+    },
+    {
+      "label": "payment-service: start",
+      "type": "shell",
+      "command": "dotnet",
+      "args": ["run", "--project", "PaymentService/PaymentService.csproj"],
+      "options": {
+        "cwd": "${workspaceFolder}/payment-service"
+      },
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Building...",
+          "endsPattern": "Application started"
+        }
+      }
+    },
+    {
+      "label": "order-processor-service: start",
+      "type": "shell",
+      "command": "mvn",
+      "args": ["spring-boot:run"],
+      "options": {
+        "cwd": "${workspaceFolder}/order-processor-service"
+      },
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "\\[INFO\\] Scanning for projects",
+          "endsPattern": "Started.*Application in"
+        }
+      }
+    },
+    {
+      "label": "message-broker-service: start",
+      "type": "shell",
+      "command": "go",
+      "args": ["run", "./cmd/server"],
+      "options": {
+        "cwd": "${workspaceFolder}/message-broker-service"
+      },
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "isBackground": true,
+      "problemMatcher": "$go"
+    },
+    {
+      "label": "review-service: start",
+      "type": "npm",
+      "script": "dev",
+      "path": "review-service/",
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Start Python Go Java Services",
+      "dependsOn": [
+        "product-service: start",
+        "inventory-service: start",
+        "order-processor-service: start",
+        "cart-service: run",
+        "message-broker-service: start"
+      ],
+      "dependsOrder": "parallel",
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Start Non-Node Services",
+      "dependsOn": [
+        "product-service: start",
+        "inventory-service: start",
+        "order-service: start",
+        "payment-service: start",
+        "order-processor-service: start",
+        "cart-service: run",
+        "message-broker-service: start"
+      ],
+      "dependsOrder": "parallel",
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Start All Services (Task-Based)",
+      "dependsOn": [
+        "auth-service: start",
+        "user-service: start",
+        "admin-service: start",
+        "audit-service: start",
+        "notification-service: start",
+        "review-service: start",
+        "product-service: start",
+        "inventory-service: start",
+        "order-service: start",
+        "payment-service: start",
+        "order-processor-service: start",
+        "cart-service: run",
+        "message-broker-service: start"
+      ],
+      "dependsOrder": "parallel",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": []
+    }
+  ]
+}
