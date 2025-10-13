@@ -202,11 +202,22 @@
     {
       "type": "coreclr",
       "request": "launch",
-      "name": "Debug Order Service",
+      "name": "Debug Order Service (API)",
       "program": "dotnet",
-      "args": ["watch", "run", "--project", "OrderService/OrderService.csproj"],
+      "args": ["watch", "run", "--project", "OrderService.Api/OrderService.Api.csproj"],
       "cwd": "${workspaceFolder}/order-service",
       "env": { "ASPNETCORE_ENVIRONMENT": "Local", "ASPNETCORE_URLS": "http://localhost:5001" },
+      "console": "integratedTerminal",
+      "stopAtEntry": false
+    },
+    {
+      "type": "coreclr",
+      "request": "launch",
+      "name": "Debug Order Service (Worker)",
+      "program": "dotnet",
+      "args": ["watch", "run", "--project", "OrderService.Worker/OrderService.Worker.csproj"],
+      "cwd": "${workspaceFolder}/order-service",
+      "env": { "ASPNETCORE_ENVIRONMENT": "Local" },
       "console": "integratedTerminal",
       "stopAtEntry": false
     },

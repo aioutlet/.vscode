@@ -333,7 +333,7 @@
       "label": "build-order-service",
       "type": "shell",
       "command": "dotnet",
-      "args": ["build", "OrderService/OrderService.csproj"],
+      "args": ["build", "OrderService.sln"],
       "options": {
         "cwd": "${workspaceFolder}/order-service"
       },
@@ -708,7 +708,36 @@
       "label": "order-service: start",
       "type": "shell",
       "command": "dotnet",
-      "args": ["run", "--project", "OrderService/OrderService.csproj"],
+      "args": ["run", "--project", "OrderService.Api/OrderService.Api.csproj"],
+      "options": {
+        "cwd": "${workspaceFolder}/order-service"
+      },
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Building...",
+          "endsPattern": "Application started"
+        }
+      }
+    },
+    {
+      "label": "order-service-worker: start",
+      "type": "shell",
+      "command": "dotnet",
+      "args": ["run", "--project", "OrderService.Worker/OrderService.Worker.csproj"],
       "options": {
         "cwd": "${workspaceFolder}/order-service"
       },
