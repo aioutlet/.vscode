@@ -10,7 +10,7 @@
         "Debug Audit Service",
         "Debug Notification Service",
         "Debug Review Service",
-        "Debug Order Service",
+        "Debug Order Service (API)",
         "Debug Payment Service"
       ],
       "preLaunchTask": "Start Python Go Java Services",
@@ -31,7 +31,7 @@
     },
     {
       "name": "🔷 Debug .NET Services",
-      "configurations": ["Debug Order Service", "Debug Payment Service"],
+      "configurations": ["Debug Order Service (API)", "Debug Payment Service"],
       "presentation": { "hidden": false, "group": "🎯 Recommended", "order": 2 }
     },
     {
@@ -43,7 +43,7 @@
         "Debug Audit Service",
         "Debug Notification Service",
         "Debug Review Service",
-        "Debug Order Service",
+        "Debug Order Service (API)",
         "Debug Payment Service"
       ],
       "presentation": { "hidden": false, "group": "🎯 Recommended", "order": 3 }
@@ -126,7 +126,7 @@
       "request": "launch",
       "name": "Debug Audit Service",
       "runtimeExecutable": "nodemon",
-      "program": "${workspaceFolder}/audit-service/src/index.ts",
+      "program": "${workspaceFolder}/audit-service/src/consumer.ts",
       "cwd": "${workspaceFolder}/audit-service",
       "envFile": "${workspaceFolder}/audit-service/.env",
       "env": { "NODE_ENV": "development" },
