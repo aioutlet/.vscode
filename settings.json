@@ -20,5 +20,8 @@
     "rabbitmq",
     "springframework",
     "testcontainers"
-  ]
+  ],
+  "python-envs.defaultEnvManager": "ms-python.python:system",
+  "python-envs.pythonProjects": [],
+  "python.defaultInterpreterPath": "C:\\Program Files\\Python313\\python.exe"
 }

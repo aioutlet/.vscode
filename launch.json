@@ -128,16 +128,14 @@
       "type": "debugpy",
       "request": "launch",
       "name": "Debug Product Service",
-      "program": "-m",
-      "args": ["uvicorn", "src.main:app", "--reload", "--host", "0.0.0.0", "--port", "8003"],
+      "module": "uvicorn",
+      "args": ["src.api.main:app", "--reload", "--host", "0.0.0.0", "--port", "8003"],
       "cwd": "${workspaceFolder}/product-service",
-      "envFile": "${workspaceFolder}/product-service/.env",
       "env": {
         "PYTHONUNBUFFERED": "1"
       },
       "console": "integratedTerminal",
-      "justMyCode": false,
-      "gevent": false
+      "justMyCode": false
     },
     {
       "type": "java",
@@ -159,18 +157,16 @@
       "type": "debugpy",
       "request": "launch",
       "name": "Debug Inventory Service",
-      "program": "-m",
-      "args": ["flask", "run", "--reload", "--host", "0.0.0.0", "--port", "5003"],
+      "module": "flask",
+      "args": ["run", "--reload", "--host", "0.0.0.0", "--port", "5003"],
       "cwd": "${workspaceFolder}/inventory-service",
-      "envFile": "${workspaceFolder}/inventory-service/.env",
       "env": {
         "PYTHONUNBUFFERED": "1",
         "FLASK_APP": "run.py",
         "FLASK_ENV": "development"
       },
       "console": "integratedTerminal",
-      "justMyCode": false,
-      "gevent": false
+      "justMyCode": false
     },
     {
       "type": "coreclr",
