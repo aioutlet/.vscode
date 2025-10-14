@@ -162,6 +162,19 @@
       "skipFiles": ["<node_internals>/**"]
     },
     {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Web BFF",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "cwd": "${workspaceFolder}/web-bff",
+      "envFile": "${workspaceFolder}/web-bff/.env",
+      "env": { "NODE_ENV": "development" },
+      "restart": true,
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
       "type": "debugpy",
       "request": "launch",
       "name": "Debug Product Service",
