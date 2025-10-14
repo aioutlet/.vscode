@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "compounds": [
     {
-      "name": "🚀 Debug All Services (Best Available)",
+      "name": "🚀 Debug All Services",
       "configurations": [
         "Debug Auth Service",
         "Debug User Service",
@@ -10,43 +10,17 @@
         "Debug Audit Service",
         "Debug Notification Service",
         "Debug Review Service",
+        "Debug Web BFF",
+        "Debug Product Service",
+        "Debug Inventory Service",
         "Debug Order Service (API)",
-        "Debug Payment Service"
+        "Debug Order Service (Worker)",
+        "Debug Payment Service",
+        "Debug Order Processor Service",
+        "Debug Cart Service",
+        "Debug Message Broker Service"
       ],
-      "preLaunchTask": "Start Python Go Java Services",
       "presentation": { "hidden": false, "group": "🎯 Recommended", "order": 1 }
-    },
-    {
-      "name": "🚀 Start All + Debug Node.js Services",
-      "configurations": [
-        "Debug Auth Service",
-        "Debug User Service",
-        "Debug Admin Service",
-        "Debug Audit Service",
-        "Debug Notification Service",
-        "Debug Review Service"
-      ],
-      "preLaunchTask": "Start Non-Node Services",
-      "presentation": { "hidden": false, "group": "🎯 Recommended", "order": 2 }
-    },
-    {
-      "name": "🔷 Debug .NET Services",
-      "configurations": ["Debug Order Service (API)", "Debug Payment Service"],
-      "presentation": { "hidden": false, "group": "🎯 Recommended", "order": 2 }
-    },
-    {
-      "name": "🚀 Debug Node.js + .NET Services",
-      "configurations": [
-        "Debug Auth Service",
-        "Debug User Service",
-        "Debug Admin Service",
-        "Debug Audit Service",
-        "Debug Notification Service",
-        "Debug Review Service",
-        "Debug Order Service (API)",
-        "Debug Payment Service"
-      ],
-      "presentation": { "hidden": false, "group": "🎯 Recommended", "order": 3 }
     },
     {
       "name": "Debug All Services + Web UI",
@@ -57,30 +31,6 @@
         "Debug Web UI (Chrome)"
       ],
       "presentation": { "hidden": false, "group": "Full Stack", "order": 2 }
-    },
-    {
-      "name": "Debug Core Node.js Services",
-      "configurations": [
-        "Debug Auth Service",
-        "Debug User Service",
-        "Debug Admin Service",
-        "Debug Audit Service",
-        "Debug Notification Service",
-        "Debug Review Service"
-      ],
-      "presentation": { "hidden": false, "group": "Backend", "order": 3 }
-    },
-    {
-      "name": "Debug Node.js Services",
-      "configurations": [
-        "Debug Auth Service",
-        "Debug User Service",
-        "Debug Admin Service",
-        "Debug Audit Service",
-        "Debug Notification Service",
-        "Debug Review Service"
-      ],
-      "presentation": { "hidden": false, "group": "Backend", "order": 4 }
     }
   ],
   "configurations": [
@@ -178,12 +128,16 @@
       "type": "debugpy",
       "request": "launch",
       "name": "Debug Product Service",
-      "module": "uvicorn",
-      "args": ["src.main:app", "--reload", "--host", "0.0.0.0", "--port", "8000"],
+      "program": "-m",
+      "args": ["uvicorn", "src.main:app", "--reload", "--host", "0.0.0.0", "--port", "8003"],
       "cwd": "${workspaceFolder}/product-service",
       "envFile": "${workspaceFolder}/product-service/.env",
-      "env": { "PYTHONUNBUFFERED": "1" },
-      "console": "integratedTerminal"
+      "env": {
+        "PYTHONUNBUFFERED": "1"
+      },
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "gevent": false
     },
     {
       "type": "java",
@@ -205,12 +159,18 @@
       "type": "debugpy",
       "request": "launch",
       "name": "Debug Inventory Service",
-      "module": "flask",
-      "args": ["run", "--reload", "--host", "0.0.0.0", "--port", "5003"],
+      "program": "-m",
+      "args": ["flask", "run", "--reload", "--host", "0.0.0.0", "--port", "5003"],
       "cwd": "${workspaceFolder}/inventory-service",
       "envFile": "${workspaceFolder}/inventory-service/.env",
-      "env": { "PYTHONUNBUFFERED": "1", "FLASK_APP": "run.py", "FLASK_ENV": "development" },
-      "console": "integratedTerminal"
+      "env": {
+        "PYTHONUNBUFFERED": "1",
+        "FLASK_APP": "run.py",
+        "FLASK_ENV": "development"
+      },
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "gevent": false
     },
     {
       "type": "coreclr",
