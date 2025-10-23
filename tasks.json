@@ -734,35 +734,6 @@
       }
     },
     {
-      "label": "order-service-worker: start",
-      "type": "shell",
-      "command": "dotnet",
-      "args": ["run", "--project", "OrderService.Worker/OrderService.Worker.csproj"],
-      "options": {
-        "cwd": "${workspaceFolder}/order-service"
-      },
-      "group": "build",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "new",
-        "showReuseMessage": true,
-        "clear": false
-      },
-      "isBackground": true,
-      "problemMatcher": {
-        "pattern": {
-          "regexp": "^$"
-        },
-        "background": {
-          "activeOnStart": true,
-          "beginsPattern": "Building...",
-          "endsPattern": "Application started"
-        }
-      }
-    },
-    {
       "label": "payment-service: start",
       "type": "shell",
       "command": "dotnet",

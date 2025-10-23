@@ -182,17 +182,6 @@
     {
       "type": "coreclr",
       "request": "launch",
-      "name": "Debug Order Service (Worker)",
-      "program": "dotnet",
-      "args": ["watch", "run", "--project", "OrderService.Worker/OrderService.Worker.csproj"],
-      "cwd": "${workspaceFolder}/order-service",
-      "env": { "ASPNETCORE_ENVIRONMENT": "Local" },
-      "console": "integratedTerminal",
-      "stopAtEntry": false
-    },
-    {
-      "type": "coreclr",
-      "request": "launch",
       "name": "Debug Payment Service",
       "program": "dotnet",
       "args": ["watch", "run", "--project", "PaymentService/PaymentService.csproj"],
