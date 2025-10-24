@@ -794,8 +794,8 @@
     {
       "label": "message-broker-service: start",
       "type": "shell",
-      "command": "go",
-      "args": ["run", "./cmd/server"],
+      "command": "dev.bat",
+      "args": [],
       "options": {
         "cwd": "${workspaceFolder}/message-broker-service"
       },
