@@ -650,7 +650,7 @@
       "label": "product-service: start",
       "type": "shell",
       "command": "python",
-      "args": ["-m", "uvicorn", "app.main:app", "--reload", "--port", "8003"],
+      "args": ["-m", "uvicorn", "src.main:app", "--reload", "--port", "8003"],
       "options": {
         "cwd": "${workspaceFolder}/product-service"
       },
