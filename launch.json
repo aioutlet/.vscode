@@ -96,7 +96,7 @@
       "request": "launch",
       "name": "Debug Product Service",
       "module": "uvicorn",
-      "args": ["src.api.main:app", "--reload", "--host", "0.0.0.0", "--port", "8003"],
+      "args": ["src.main:app", "--reload", "--host", "0.0.0.0", "--port", "8003"],
       "cwd": "${workspaceFolder}/services/product-service",
       "env": {
         "PYTHONUNBUFFERED": "1"
@@ -214,49 +214,11 @@
       }
     },
     {
-      "type": "msedge",
-      "request": "launch",
-      "name": "Debug Web UI (Edge - No Task)",
-      "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}/ui/web-ui/src",
-      "sourceMaps": true,
-      "sourceMapPathOverrides": {
-        "webpack:///src/*": "${webRoot}/*",
-        "webpack:///./*": "${webRoot}/*",
-        "webpack:///./~/*": "${webRoot}/node_modules/*"
-      },
-      "timeout": 10000
-    },
-    {
-      "type": "chrome",
-      "request": "attach",
-      "name": "Attach to Web UI (Chrome)",
-      "port": 9222,
-      "webRoot": "${workspaceFolder}/ui/web-ui/src",
-      "sourceMaps": true,
-      "sourceMapPathOverrides": {
-        "webpack:///src/*": "${webRoot}/*",
-        "webpack:///./*": "${webRoot}/*",
-        "webpack:///./~/*": "${webRoot}/node_modules/*"
-      }
-    },
-    {
       "type": "node",
       "request": "launch",
       "name": "Run E2E Tests",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["test"],
-      "cwd": "${workspaceFolder}/tests",
-      "env": { "NODE_ENV": "test" },
-      "console": "integratedTerminal",
-      "skipFiles": ["<node_internals>/**"]
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Run E2E Tests (Debug)",
-      "program": "${workspaceFolder}/tests/node_modules/.bin/jest",
-      "args": ["--runInBand", "--detectOpenHandles"],
       "cwd": "${workspaceFolder}/tests",
       "env": { "NODE_ENV": "test" },
       "console": "integratedTerminal",
