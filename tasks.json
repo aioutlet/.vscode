@@ -550,6 +550,11 @@
       "type": "npm",
       "script": "start",
       "path": "ui/web-ui/",
+      "options": {
+        "env": {
+          "BROWSER": "none"
+        }
+      },
       "group": {
         "kind": "build",
         "isDefault": false
