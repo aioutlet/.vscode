@@ -43,7 +43,7 @@
       "request": "launch",
       "name": "Debug Audit Service",
       "runtimeExecutable": "nodemon",
-      "program": "${workspaceFolder}/services/audit-service/src/consumer.ts",
+      "program": "${workspaceFolder}/services/audit-service/src/consumer/server.ts",
       "cwd": "${workspaceFolder}/services/audit-service",
       "envFile": "${workspaceFolder}/services/audit-service/.env",
       "env": { "NODE_ENV": "development" },
@@ -111,14 +111,19 @@
       "mainClass": "com.aioutlet.orderprocessor.OrderProcessorApplication",
       "projectName": "order-processor-service",
       "cwd": "${workspaceFolder}/services/order-processor-service",
-      "env": { "SPRING_PROFILES_ACTIVE": "local" },
+      "env": {
+        "SPRING_PROFILES_ACTIVE": "local"
+      },
+      "envFile": "${workspaceFolder}/services/order-processor-service/.env",
       "args": [],
       "console": "integratedTerminal",
       "vmArgs": [
         "-Dspring.profiles.active=local",
         "-Dspring.devtools.restart.enabled=true",
         "-Dspring.devtools.livereload.enabled=true"
-      ]
+      ],
+      "classPaths": ["${workspaceFolder}/services/order-processor-service/target/classes"],
+      "modulePaths": []
     },
     {
       "type": "debugpy",
