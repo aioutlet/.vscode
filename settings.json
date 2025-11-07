@@ -6,6 +6,7 @@
     "appender",
     "bukhtoyarov",
     "cartservice",
+    "dapr",
     "databind",
     "fasterxml",
     "flywaydb",

@@ -655,7 +655,7 @@
       "label": "product-service: start",
       "type": "shell",
       "command": "python",
-      "args": ["-m", "uvicorn", "src.main:app", "--reload", "--port", "8003"],
+      "args": ["-m", "uvicorn", "main:app", "--reload", "--port", "8003"],
       "options": {
         "cwd": "${workspaceFolder}/services/product-service"
       },
@@ -895,6 +895,83 @@
         "message-broker-service: start"
       ],
       "dependsOrder": "parallel",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "product-service: start with dapr",
+      "type": "shell",
+      "command": "dapr",
+      "args": [
+        "run",
+        "--app-id",
+        "product-service",
+        "--app-port",
+        "8003",
+        "--dapr-http-port",
+        "3500",
+        "--dapr-grpc-port",
+        "50001",
+        "--components-path",
+        "./.dapr/components",
+        "--",
+        "python",
+        "-m",
+        "uvicorn",
+        "main:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8003",
+        "--reload"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/services/product-service"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "dapr",
+        "pattern": {
+          "regexp": "^(.*)$",
+          "file": 1,
+          "location": 2,
+          "message": 3
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*starting Dapr Runtime.*$",
+          "endsPattern": "^.*dapr initialized.*$"
+        }
+      }
+    },
+    {
+      "label": "dapr: stop all",
+      "type": "shell",
+      "command": "dapr",
+      "args": ["stop", "--app-id", "product-service"],
       "group": {
         "kind": "build",
         "isDefault": false

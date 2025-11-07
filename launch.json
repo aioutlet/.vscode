@@ -222,6 +222,49 @@
       "env": { "NODE_ENV": "test" },
       "console": "integratedTerminal",
       "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "Debug Product Service with Dapr",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/services/product-service/src/main.py",
+      "module": "uvicorn",
+      "args": ["src.main:app", "--host", "0.0.0.0", "--port", "8003", "--reload"],
+      "cwd": "${workspaceFolder}/services/product-service",
+      "envFile": "${workspaceFolder}/services/product-service/.env",
+      "console": "integratedTerminal",
+      "preLaunchTask": "product-service: start with dapr",
+      "postDebugTask": "dapr: stop all"
+    },
+    {
+      "name": "Debug Product Service (Standalone)",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/services/product-service/src/main.py",
+      "module": "uvicorn",
+      "args": ["src.main:app", "--host", "0.0.0.0", "--port", "8003", "--reload"],
+      "cwd": "${workspaceFolder}/services/product-service",
+      "envFile": "${workspaceFolder}/services/product-service/.env",
+      "env": {
+        "DAPR_ENABLED": "false"
+      },
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Debug Secret Manager (Product Service)",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/services/product-service/src/main.py",
+      "module": "uvicorn",
+      "args": ["src.main:app", "--host", "0.0.0.0", "--port", "8003", "--reload", "--log-level", "debug"],
+      "cwd": "${workspaceFolder}/services/product-service",
+      "envFile": "${workspaceFolder}/services/product-service/.env",
+      "env": {
+        "LOG_LEVEL": "DEBUG",
+        "DAPR_ENABLED": "false"
+      },
+      "console": "integratedTerminal",
+      "justMyCode": false
     }
   ]
 }
