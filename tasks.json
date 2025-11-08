@@ -546,10 +546,10 @@
       "problemMatcher": "$tsc"
     },
     {
-      "label": "start-web-ui",
+      "label": "start-customer-ui",
       "type": "npm",
       "script": "start",
-      "path": "ui/web-ui/",
+      "path": "ui/customer-ui/",
       "options": {
         "env": {
           "BROWSER": "none"

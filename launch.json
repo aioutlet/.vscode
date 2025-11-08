@@ -187,30 +187,30 @@
     {
       "type": "chrome",
       "request": "launch",
-      "name": "Debug Web UI (Chrome)",
+      "name": "Debug Customer UI (Chrome)",
       "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}/ui/web-ui/src",
+      "webRoot": "${workspaceFolder}/ui/customer-ui/src",
       "sourceMaps": true,
       "sourceMapPathOverrides": {
         "webpack:///src/*": "${webRoot}/*",
         "webpack:///./*": "${webRoot}/*",
         "webpack:///./~/*": "${webRoot}/node_modules/*"
       },
-      "preLaunchTask": "start-web-ui"
+      "preLaunchTask": "start-customer-ui"
     },
     {
       "type": "msedge",
       "request": "launch",
-      "name": "Debug Web UI (Edge)",
+      "name": "Debug Customer UI (Edge)",
       "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}/ui/web-ui/src",
+      "webRoot": "${workspaceFolder}/ui/customer-ui/src",
       "sourceMaps": true,
       "sourceMapPathOverrides": {
         "webpack:///src/*": "${webRoot}/*",
         "webpack:///./*": "${webRoot}/*",
         "webpack:///./~/*": "${webRoot}/node_modules/*"
       },
-      "preLaunchTask": "start-web-ui"
+      "preLaunchTask": "start-customer-ui"
     },
     {
       "type": "node",
