@@ -920,7 +920,7 @@
         "--app-port",
         "8003",
         "--dapr-http-port",
-        "3500",
+        "3501",
         "--dapr-grpc-port",
         "50001",
         "--components-path",

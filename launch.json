@@ -224,46 +224,31 @@
       "skipFiles": ["<node_internals>/**"]
     },
     {
-      "name": "Debug Product Service with Dapr",
-      "type": "python",
+      "name": "Product Service: Direct (No Dapr)",
+      "type": "debugpy",
       "request": "launch",
-      "program": "${workspaceFolder}/services/product-service/src/main.py",
       "module": "uvicorn",
-      "args": ["src.main:app", "--host", "0.0.0.0", "--port", "8003", "--reload"],
+      "args": ["main:app", "--host", "0.0.0.0", "--port", "1001", "--reload"],
       "cwd": "${workspaceFolder}/services/product-service",
       "envFile": "${workspaceFolder}/services/product-service/.env",
       "console": "integratedTerminal",
-      "preLaunchTask": "product-service: start with dapr",
-      "postDebugTask": "dapr: stop all"
+      "justMyCode": false,
+      "jinja": true
     },
     {
-      "name": "Debug Product Service (Standalone)",
-      "type": "python",
-      "request": "launch",
-      "program": "${workspaceFolder}/services/product-service/src/main.py",
-      "module": "uvicorn",
-      "args": ["src.main:app", "--host", "0.0.0.0", "--port", "8003", "--reload"],
-      "cwd": "${workspaceFolder}/services/product-service",
-      "envFile": "${workspaceFolder}/services/product-service/.env",
-      "env": {
-        "DAPR_ENABLED": "false"
+      "name": "Product Service: Attach to Dapr Process",
+      "type": "debugpy",
+      "request": "attach",
+      "connect": {
+        "host": "localhost",
+        "port": 5678
       },
-      "console": "integratedTerminal"
-    },
-    {
-      "name": "Debug Secret Manager (Product Service)",
-      "type": "python",
-      "request": "launch",
-      "program": "${workspaceFolder}/services/product-service/src/main.py",
-      "module": "uvicorn",
-      "args": ["src.main:app", "--host", "0.0.0.0", "--port", "8003", "--reload", "--log-level", "debug"],
-      "cwd": "${workspaceFolder}/services/product-service",
-      "envFile": "${workspaceFolder}/services/product-service/.env",
-      "env": {
-        "LOG_LEVEL": "DEBUG",
-        "DAPR_ENABLED": "false"
-      },
-      "console": "integratedTerminal",
+      "pathMappings": [
+        {
+          "localRoot": "${workspaceFolder}/services/product-service",
+          "remoteRoot": "."
+        }
+      ],
       "justMyCode": false
     }
   ]
